@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from datetime import timedelta
 from pathlib import Path
-
+from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-2i^e-j_-q4a!ty1%x=@=#a5%jb0@ftl-wgtmcp+ozp&5ghaxyn'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = []
 
@@ -92,10 +92,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # <-- UPDATED line
         'NAME': 'djangocrudrest',                 # <-- UPDATED line
-        'USER': 'root',                     # <-- UPDATED line
-        'PASSWORD': '',              # <-- UPDATED line
-        'HOST': 'localhost',                # <-- UPDATED line
-        'PORT': '3306',
+        'USER': config('DB_USER'),                     # <-- UPDATED line
+        'PASSWORD': config('DB_PASSWORD'),              # <-- UPDATED line
+        'HOST': config('DB_HOST'),                # <-- UPDATED line
+        'PORT': config('DB_PORT'),
     }
 }
 
