@@ -26,6 +26,8 @@ mysqlclient==2.1.1
     # via -r requirements.in
 pyjwt==2.6.0
     # via djangorestframework-simplejwt
+python-decouple==3.7
+    # via -r requirements.in
 pytz==2022.7
     # via djangorestframework
 sqlparse==0.4.3
